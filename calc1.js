@@ -5,6 +5,7 @@ let komnata = {
 }
 
 // komnata.dlinna = ;
+
 // komnata.shirina = ;
 // komnata.visota = ;
 
@@ -13,3 +14,5 @@ let html  = `
 <h2>Площадь всех стен равна: ${(komnata.dlinna + komnata.shirina)*2 * komnata.visota}
 </h2>`;
 document.write(html);
+
+
