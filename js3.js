@@ -34,7 +34,7 @@ function calc(a,b){
     return  (a + b);
 }
 let result = calc(3,6);
-document.write(`Результат: ${result}`);
+//document.write(`Результат: ${result}`);
 
 let func1 = function(obj){
     return console.log(obj)
