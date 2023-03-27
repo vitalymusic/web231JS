@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .danger{
+            color:red;border:2px solid red;
+            position: relative;
+            left:10px !important;
+            transition: all 1s;
+        }
+    </style>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            // 1 sposob
+            let heading1 = document.getElementById("title1");
+            // 2 sposob
+            let paragraphs = document.getElementsByTagName("p");
+            // 3 sposob
+            let divs = document.getElementsByClassName("container");
+
+            // 4 sposob
+
+            let img = document.querySelector(".container > img");
+            let images = document.querySelectorAll(".container img");
+            
+            let btn = document.querySelector("button");
+
+            console.log(heading1);
+            // console.log(paragraphs[0]);
+            // console.log(divs[0]);
+            // console.log(img);
+            // console.log(images);
+            let name = "Vitaly";
+
+            heading1.innerText = `Title ${name}`;
+            // divs[0].innerHTML = `
+            //     <h3>Text</h3>
+            //     <p class="new"></p>
+            // `;
+            // divs[0].innerHTML +=`
+            // <h3>Text2</h3>
+            //     <p class="new">Second</p>
+            // `;
+
+            // heading1.innerText="";
+
+
+            // Adding inline styles
+            function blue1(){
+                heading1.style.backgroundColor = "blue";
+                heading1.style.width = "300px";
+            }
+
+           heading1.onclick = blue1;
+
+
+           function setDanger(){
+                // paragraphs[0].classList.add("danger");
+                // paragraphs[0].classList.remove("danger");
+                paragraphs[0].classList.toggle("danger");
+
+                paragraphs[0].innerText = "Alert";
+           }
+           btn.onclick = setDanger;
+           img.setAttribute("src","image1.jpg");
+        //    alert(img.getAttribute("src"));
+
+
+
+
+           for(let i=0;i<images.length;i++){
+
+                images[i].setAttribute("alt","My Image");
+                images[i].setAttribute("src",`image${i+1}.jpg`);
+                images[i].style.width="300px";
+                images[i].style.border="2px solid green";
+                images[i].onmouseover = function(){
+                    this.style.backgroundColor="red";
+                };
+                images[i].onmouseleave = function(){
+                    this.style.backgroundColor="green";
+                };
+                images[i].onclick = (event)=>{
+                    // this.style.backgroundColor="green";
+                    console.log(event.target.getAttribute("src"));
+                    // console.log(this);
+                };
+
+
+
+           }
+
+
+           let cars = [
+            "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200",
+            "https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg",
+            "https://imageio.forbes.com/specials-images/imageserve/5f962df3991e5636a2f68758/0x0.jpg?format=jpg&crop=812,457,x89,y103,safe&width=1200"
+           ];
+
+
+
+           for(let j=0;j<cars.length;j++){
+                document.querySelector("footer").innerHTML +=`
+                    <img src="${cars[j]}" width="300px">
+                `;
+           }
+           
+
+
+
+
+        //    Set Attributes JS
+
+
+        })
+
+        // сделать галерею картинок (10) по клику на картинки показывается эта картинка в большем размере (Работа с Атрибутами и классами)
+        // Боковое меню, которое показывается
+
+        // Модальное окно по кнопке (visibillity)
+    </script>
+</head>
+<body>
+
+    <h1 id="title1"></h1>
+    <button>Click</button>
+    <p style="position: relative; left:-3000px"></p>
+    <div class="container">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <script>
+
+    </script>
+</body>
+</html>
