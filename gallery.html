@@ -6,7 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <style>
+        .gallery{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-gap: 10px;
+        }
+        .gallery img{
+            width: 100%;
+        }
 
+
+        .lightbox{
+            position: fixed;
+            top:0;
+            height: 100vh;
+            width:100vw;
+            background-color: rgba(0, 0, 0, 0.696);
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .lightbox img{
+            border: 5px double white;
+            width: 65%;
+            /* display: block; */
+
+            
+
+
+        }
     </style>
 </head>
 <body>  
@@ -14,7 +43,12 @@
     <h1>Галерея</h1>
 
     <div class="gallery">
-        
+
+    </div>
+
+
+    <div class="lightbox">
+        <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200" alt="">
     </div>
 
     
@@ -28,6 +62,47 @@
         "https://www.usnews.com/object/image/00000186-0f0d-da67-a5ef-2f5f87990000/2023-lucid-air-1.jpg?update-time=1675289789997&size=responsive640",
         "https://imagescdn.dealercarsearch.com/DealerImages/ImageLibrary/1920x800/05b4a5f5.jpg"
         ];
+
+
+        let galleryDiv = document.querySelector('.gallery');
+        let lightboxDiv = document.querySelector('.lightbox');
+        let lightboxImage = document.querySelector('.lightbox img');
+
+        // for(let i=0;i<images.length;i++) {
+        //     galleryDiv.innerHTML += `
+        //         <img src="${images[i]}" alt="image${i+1}">
+        //     `;
+        // }
+
+
+        for (let image of images){
+            let i=0;
+            galleryDiv.innerHTML += `
+                 <img src="${image}" alt="image${i+1}">
+            `;
+            i++;
+        }
+        // Загружает картинки
+
+        let imgElements = document.querySelectorAll('.gallery img');
+
+        for(img of imgElements){
+            img.onclick = function(){
+              
+                let imgSrc = this.getAttribute('src');
+                lightboxImage.setAttribute("src",imgSrc);
+                lightboxDiv.style.display = 'flex';
+
+            }
+        }
+        // показывать картинки по клику
+
+        lightboxDiv.onclick = function(){
+            this.style.display = "none";
+        }
+
+
+
     </script>
 </body>
 </html>
