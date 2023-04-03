@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slides{
+            /* height:300px; */
+        }
+
+
+
+        .buttons{
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carousel</h1>
+
+    <div class="slider">
+        <div class="slides">
+
+        </div>
+        <div class="buttons">
+            <button class="left">Left</button>
+            <button class="right">Right</button>
+        </div>
+    </div>
+
+    <script>
+        let data = [
+            {
+                title:"HTML",
+                text:"The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.",
+                img:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/240px-HTML5_logo_and_wordmark.svg.png"
+            },
+            {
+                title:"CSS",
+                text:"Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML (including XML dialects such as SVG, MathML or XHTML).[1] CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.[2]",
+                img:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/240px-CSS3_logo_and_wordmark.svg.png"
+            },
+            {
+                title:"JavaScript",
+                text:"JavaScript (/ˈdʒɑːvəskrɪpt/), often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.",
+                img:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/JavaScript_code.png/600px-JavaScript_code.png"
+            }
+
+        ]
+
+            let slideNumber = 0;
+        function showContent(slideNumber){
+            console.log(slideNumber);
+            let slideDiv = document.querySelector('.slides');
+            slideDiv.innerHTML = `
+                <h2>${data[slideNumber].title}</h2>
+                <p>${data[slideNumber].text}</p>
+                <img src="${data[slideNumber].img}" alt="slide${slideNumber}">
+            `;
+            
+        }
+        showContent(slideNumber);
+
+        document.querySelector('button.left').onclick = ()=>{
+            slideNumber--;
+            if(slideNumber<0){
+                slideNumber = data.length-1;     
+            }
+            showContent(slideNumber);
+        }
+
+        document.querySelector('button.right').onclick = ()=>{
+            slideNumber++;
+            if(slideNumber>data.length-1){
+                slideNumber = 0;     
+            }
+            showContent(slideNumber);
+        }
+
+        // https://animate.style/
+
+    </script>
+</body>
+</html>
