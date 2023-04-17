@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        .slider{
+            visibility: hidden;
+        }
         .slides{
             /* height:300px; */
         }
@@ -64,7 +67,6 @@
             
         }
         showContent(slideNumber);
-
         document.querySelector('button.left').onclick = ()=>{
             slideNumber--;
             if(slideNumber<0){
@@ -74,6 +76,10 @@
         }
 
         document.querySelector('button.right').onclick = ()=>{
+            showNext();
+        }
+
+        function showNext(){
             slideNumber++;
             if(slideNumber>data.length-1){
                 slideNumber = 0;     
@@ -81,7 +87,21 @@
             showContent(slideNumber);
         }
 
+        setInterval(showNext,5000);
+        // function(){
+
+        // }
+
+        // ()=>{
+
+        // }
+        setTimeout(()=>{document.querySelector('.slider').style.visibility = 'visible';},2000); 
+
         // https://animate.style/
+
+        // Сделать Табы - (Bootstrap), добавить анимации на слайдер, Мобильная верстка Выплывающее меню
+
+        
 
     </script>
 </body>

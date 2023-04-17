@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr1 = [];
+
+
+        
+        // push добавление элементов в массив в конец
+        arr1.push({
+            name:"Vasja",
+            age:47
+        });
+        arr1.push({
+            name:"Petja",
+            age:35
+        });
+
+        arr1.pop();
+         // POP удаление элементов из массива
+
+        // shift();
+        arr1.shift({
+            name:"Anna",
+            age:20
+        }); 
+        // unshift();
+
+        arr2 = ["Mersedes","BMW"]
+
+        let new_arr = arr1.concat(arr2);
+
+        // concat объединяет массивы
+        // let short_arr = new_arr.slice(2);
+        let short_arr = new_arr.slice(2,4);
+        // slice() Разделяет массив возвращает новый массив
+
+        let months = ["январь","февраль", "март"];
+        
+        months.sort();
+            //Сотирует текст
+            
+        let numbers = [1,2,11,12,3,4];
+        // numbers.sort();
+        numbers.sort(function(a,b){
+            return a - b
+        });
+
+        new_arr.find(function(item,i){
+            if(item == "BMW"){
+                return item;
+            }
+        })
+        numbers.findIndex(function(item,i){
+            if(item >10){
+                return item;
+            }
+        })
+
+
+        let newBigArray = [];
+        numbers.map(function(element,i){
+            newBigArray.push(element*2);
+        })
+
+        // 
+        // numbers.forEach(function(element,i){
+        //     newBigArray.push(element*2);
+        // })
+
+
+
+        
+
+        console.log(arr1.length);
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
