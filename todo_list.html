@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" name="" id="input">
+        <button>добавить</button>
+
+
+        <ul>
+
+        </ul>
+    <script>
+        let elem1 = document.querySelector('#input');
+        let ul = document.querySelector('ul');
+        let button = document.querySelector('button');
+        
+        function saveData(data){
+            window.localStorage.setItem("tasks",data);
+        }
+        function loadSavedData(){
+            let savedTasks = window.localStorage.getItem("tasks").split(',');
+            ul.innerHTML = "";
+            savedTasks.forEach((item,i)=>{
+                ul.innerHTML+=`
+                    <li>${i+1}. ${item}</li>
+                `;
+            })
+        }
+
+        let tasks = [];
+        
+        button.addEventListener("click",()=>{
+            if(elem1.value.length >= 3){
+
+                tasks.push(elem1.value);
+                elem1.value="";
+                saveData(tasks);
+                
+            }
+            loadSavedData();
+           
+            
+           
+           
+            
+            
+        })
+        loadSavedData();
+
+
+
+    </script>
+    <script>
+        
+        
+        
+    </script>
+
+
+</body>
+</html>
