@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <form action="" id="form1">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="email" name="email" id="" style="visibility: hidden;">
+        <input type="text" name="phone" id="" style="visibility: hidden;">
+        <input type="submit" value="OK">
+    </form>
+
+    <form action="" id="form2">
+        <input type="checkbox" name="agree" id="">
+        <div>
+            <textarea name="text" id="" cols="30" rows="10" disabled>
+            </textarea >
+        </div>
+    </form>
+
+
+    <script>
+        let inp1 = document.querySelector("[name=\"username\"]");
+        let inp2 = document.querySelector("[name=\"password\"]");
+        let inp3 = document.querySelector("[name=\"email\"]");
+        let inp4 = document.querySelector("[name=\"phone\"]");
+
+        let textarea = document.querySelector("[name=\"text\"]");
+        let form = document.querySelector("#form1");
+        let check1 = document.querySelector("[type=\"checkbox\"]");
+
+            inp2.oninput = function(){
+
+                console.log(this);
+                if(inp1.value.length >0 && inp2.value.length>0){
+                    inp3.style.visibility = "visible";
+                    inp4.style.visibility = "visible";
+                }else{
+                    inp3.style.visibility = "hidden";
+                    inp4.style.visibility = "hidden";
+                }
+                    
+            }
+
+
+
+        form.onsubmit = (event)=>{
+            event.preventDefault();
+            if(
+                inp1.value.length <5 
+            || inp2.value.length<3
+            
+            ){
+                form.innerHTML+=`<span> Error </span>`;
+            }else{
+                form.submit();
+            }
+
+
+        }
+
+        check1.onchange = (event)=>{
+            if(event.target.checked){
+                textarea.removeAttribute("disabled");
+            }else{
+                textarea.setAttribute("disabled",true);
+            }
+            ;
+        }
+
+        // form.submit();
+        // console.log(inp1);
+        // console.log(inp2);
+        // console.log(form);
+        // console.log(form.input[0]);
+
+        // форма состоит из 2 частей
+        // Вторая часть открываются только если заполнены первые два поля
+
+       
+        // Имя
+        // Фамилия
+
+        // Почта и Телефон открываются только при заполненных первый двух полей
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+        <form action="">
+            <input type="text" name="title">
+            <textarea name="body" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="Отправить">
+        </form>
+
+
+        <script>
+
+            let form = document.forms[0];
+            form.onsubmit = (event)=>{
+                event.preventDefault();
+                data = FormData(form);
+                sendData(data);
+
+            }
+
+
+            function sendData(data){
+                fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: data, //Тело запроса
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+            }
+
+        
+        </script>
+
+
+
+        <script>
+            // Получение данных с сервера
+
+            // const http = new XMLHttpRequest();
+            // http.onreadystatechange = () => {
+            //     if (http.readyState === 4) {
+            //         let data = JSON.parse(http.response);
+            //         console.log(data);
+            //     }
+            // }
+
+            // http.open('GET','https://jsonplaceholder.typicode.com/users/1/posts');
+            // http.send();
+            
+            // fetch('https://jsonplaceholder.typicode.com/users/1/posts')
+            // .then((response) => response.json())
+            // .then((json) => console.log(json));
+
+            
+    
+
+
+            // ОТправка данных
+
+
+            // fetch('https://jsonplaceholder.typicode.com/posts', {
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         title: 'foo',
+            //         body: 'bar',
+            //         userId: 1,
+            //     }),
+            //     headers: {
+            //         'Content-type': 'application/json; charset=UTF-8',
+            //     },
+            //     })
+            // .then((response) => response.json())
+            // .then((json) => console.log(json));
+        </script>
+</body>
+</html>
