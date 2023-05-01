@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>test copy</h1>
+    <button onclick="newWindow()">Open</button>
+    <div style="height:200vh">
+
+    </div>
+       
+       <script>
+            window.addEventListener("resize",()=>{
+                // document.write(window.innerWidth)
+
+                // document.write(window.innerHeight)
+                console.log(window.innerWidth,window.innerHeight);
+            })
+               
+            function newWindow(){
+                window.open('https://ss.com',"_blank","popup=yes,width=400,height=300,left=100,top=100");
+                // window.close();
+            }
+            window.onscroll = ()=>{
+                // console.log(window.pageYOffset);
+            }
+
+            window.addEventListener("deviceorientation",()=>{
+                    console.log(window.screen.orientation);
+            });
+            addEventListener("copy", (event) => {
+                alert("ok")
+            });
+            
+// window.location.replace(
+//   "https://developer.mozilla.org/en-US/docs/Web/API/Location.reload"
+// );
+setInterval(()=>{
+    window.location.reload();
+},2000);
+
+// сделать корзину покупок исрользуя data атрибуты с сохранением в local Storage
+// вывести товары из масства объектов
+// вывод корзины из local storage
+           
+        </script>
+</body>
+</html>
