@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .items{
+            display: flex;
+        }
+        .item{
+            border:2px solid black;
+            padding:30px;
+            margin:30px;
+        }
+        .items img{
+            width:200px;
+        }
+        .items button{
+                display:block;
+                margin: auto;
+        }
+
+        .cart{
+           position: absolute;
+           right:30px;
+           top:20px;
+           padding: 10px;
+           background:rgb(127, 203, 236);
+           border-radius: 5px;
+
+        }
+    </style>
+</head>
+<body>
+        <h1>товары</h1>
+        <div class="cart">
+             <h1>Корзина</h1>
+             <div>
+
+             </div>
+        </div>
+        <div class="items">
+
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                readData();
+            })
+            
+            let cart = [];
+
+            let items = [
+                {
+                    id:1,
+                    name:"Картошка",
+                    price:2.50,
+                    img:"https://img3.zakaz.ua/novus20200928.1602237766.ad72436478c_2020-10-09_Alina/novus20200928.1602237766.SNCPSG10.obj.0.1.jpg.oe.jpg.pf.jpg.1350nowm.jpg.1350x.jpg"
+                    
+                },
+                {
+                    id:2,
+                    name:"Виноград",
+                    price:5.50,
+                    img:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Table_grapes_on_white.jpg/1200px-Table_grapes_on_white.jpg"
+                },
+                {
+                    id:3,
+                    name:"Клубника",
+                    price:2.50,
+                    img:"https://m.dom-eda.com/uploads/images/catalog/item/deac340ab0/e99157e58f_500.jpg"
+                },
+                {
+                    id:4,
+                    name:"Апельсины",
+                    price:3.50,
+                    img:"https://m.dom-eda.com/uploads/images/catalog/item/dfc9a3e974/3cbf3bd41c_1000.jpg"
+                },
+
+                
+            ]
+
+            let itemsDiv = document.querySelector(".items");
+            let cartDiv = document.querySelector(".cart div");
+
+            items.map(item=>{
+                itemsDiv.innerHTML+=`
+                    <div class="item">
+                        <h3>Название: ${item.name}</h3>  
+                        <h3>Цена: ${(item.price.toFixed(2))}</h3> 
+                        <img src="${item.img}">
+                        <button data-id="${item.id}" data-name="${item.name}" data-price="${item.price}">Купить</button>
+                    </div>
+                
+                `;
+            })
+
+
+
+            let buttons = document.querySelectorAll(".item button");
+
+            buttons.forEach((btn)=>{
+                btn.addEventListener("click",event=>{
+                    cart.push({
+                        name:event.target.dataset.name,
+                        price:event.target.dataset.price
+                    })
+                    console.log(cart);
+                    showCart(cart);
+                    saveData(cart);
+                })
+            })
+
+            function saveData(data){
+                localStorage.setItem("cart",JSON.stringify(data));
+            }
+
+            function readData(){
+                if(localStorage.getItem("cart")==undefined){
+                    return false;
+                }
+                let data = localStorage.getItem("cart");
+                showCart(JSON.parse(data));
+            }
+
+            function showCart(data){
+                let sum=0;
+                let html =`
+                    <table border="1">
+                     <tr>
+                        <td>Название Товара</td>
+                        <td>Стоимость</td>
+                     </tr>      
+                `;
+                data.forEach((item)=>{
+                    sum += +item.price;
+                    html+=`
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.price}</td>
+                        </tr>    
+                    `;
+                })
+
+                html+=`
+                    <tr>
+                        <td colspan="2">Сумма за все товары: ${sum.toFixed(2)}</td>
+                    </tr>
+                `;
+                html+="</table>";
+
+                cartDiv.innerHTML = html;
+            }
+        </script>
+</body>
+</html>
+
