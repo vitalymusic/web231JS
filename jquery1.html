@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button>
+        click me
+    </button>
+<div class="slide">
+    <h1>text</h1>
+    <h1>text</h1>
+    <h1>text</h1>
+    <h1>text</h1>
+    <h1>text</h1>
+    <div></div>
+    <p></p>
+</div>
+
+<div class="email">
+    <form action="">
+        <input type="text" name="email" id="">
+        <textarea name="message" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="Send">
+    </form>
+</div>
+
+    <script>
+        $(document).ready(()=>{
+            // Jquery Code
+            $('h1').text('hello world');
+            // $('div').html(`
+            //     <img src="">
+            // `);
+            $('div').append(`
+                <img src="" alt="">
+            `);
+            $('div').prepend(`
+                <img src="test.jpg" alt="kartinka" data-id="001">
+            `);
+
+            $("p")
+                .before(`<h2>Text before</h2>`)
+                .text("Text after")
+                .css("color","red")
+                ;
+
+                $('div').hide();
+                $('div').show();
+
+            
+                // add remove class
+
+                $('div').addClass("active");
+                $('div').removeClass("active");
+                $('div').toggleClass("active");
+
+                // attributes
+                
+                $('div img').attr("src");
+                $('div img').attr("src","kartinka2.jpg").data("id");
+
+
+                // события
+
+                $('h1').click(()=>{
+                    alert();
+                }).mouseover((event)=>{
+                    $(event.target).css("background","grey");
+                }).mouseleave(()=>{
+                    $(event.target).css({background:"#fff",color:"red"});
+
+                })
+
+
+                $(document).keydown((event)=>{
+                    console.log(event)
+                    if(event.code === "KeyA"){
+                        $("body").css("background","red");      
+                    }
+                })
+                $("h1").click(function(){
+                    $(this).fadeOut();
+                });
+
+
+                $("button").click(()=>{
+                    $(".slide").slideToggle({});
+                })
+
+
+
+                let url = "https://jsonplaceholder.typicode.com/users/1/albums";
+                $.get(url,(response)=>{
+                    $('.content').html(JSON.stringify(response));
+
+                })
+
+
+                $(".email form").submit((e)=>{
+                    e.preventDefault();
+                    let data = $(".email form").serialize();
+
+                    $.post("https://formspree.io/f/myyaopwo",data,(answer)=>{
+                        console.log(answer);
+                    })
+
+                })
+
+               
+
+
+
+        })
+    </script>
+
+</body>
+</html>

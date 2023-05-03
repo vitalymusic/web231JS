@@ -1,0 +1,18 @@
+[
+    {
+        "username":"Alexey",
+        "age":"40",
+        "address":{
+            "City":"Riga",
+            "Street":"Maskavas 346"
+        }
+    },
+    {
+        "username":"Andrey",
+        "age":"30",
+        "address":{
+            "City":"Riga",
+            "Street":"Maskavas 346"
+        }
+    }
+]
